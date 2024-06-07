@@ -11,7 +11,7 @@ df.fillna(df.mean(), inplace=True)
 features = df.drop(columns=['sequence', 'label'], errors='ignore')
 
 # Initialize the Isolation Forest model
-iso_forest = IsolationForest(bootstrap=True, max_samples=2048 ,contamination=0.394, random_state=2546)
+iso_forest = IsolationForest(bootstrap=True, max_samples=256 , contamination=0.394, random_state=2546)
 
 # Fit the model on the data
 iso_forest.fit(features)
