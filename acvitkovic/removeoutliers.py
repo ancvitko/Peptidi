@@ -2,6 +2,12 @@ import pandas as pd
 from sklearn.ensemble import IsolationForest
 from sklearn.model_selection import train_test_split
 
+
+##############
+## OVAJ FILE JE PROMIJENJEN NAKON GENERIRANJA TESTNIH PLOTOVA, JOS JE WORK IN PROGRESS ALI CE
+## SLUZITI ZA PODJELU IZMEDJU TESTNIH I TRENING UZORAKA
+##############
+
 # Load Data
 data = pd.read_csv('encoded_properties.csv')
 
