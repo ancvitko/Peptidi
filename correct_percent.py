@@ -1,6 +1,7 @@
 import pandas as pd
 
-# Read the CSV file
+## OLD/DEPRECATED CODE: from when we thought the label column signified anomaly scores :')
+
 df1 = pd.read_csv('peptides_data.csv')
 df2 = pd.read_csv('encoded_properties_with_anomalies.csv')
 

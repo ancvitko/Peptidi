@@ -6,7 +6,9 @@ from sklearn.cluster import KMeans, DBSCAN
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load your dataset
+## work in progress
+
+# LDraw clusters for the entire dataset
 data = pd.read_csv('encoded_properties.csv')
 X = data.drop(columns=['label', 'sequence'], errors='ignore')
 
@@ -48,7 +50,7 @@ plt.title('t-SNE with DBSCAN Clustering')
 
 plt.show()
 
-# Interactive plots using Plotly (if needed)
+# Interactive plots using Plotly
 import plotly.express as px
 
 # Interactive PCA plot with KMeans
@@ -59,21 +61,18 @@ fig_pca_kmeans.show()
 fig_tsne_dbscan = px.scatter(data, x='tSNE1', y='tSNE2', color='DBSCAN_labels', hover_data=['Cruciani_1', 'Cruciani_2', 'Cruciani_3', 'Instability_Index', 'Boman_Index', 'Hydrophobicity_Eisenberg', 'Hydrophobic_Moment', 'Aliphatic_Index', 'Isoelectric_Point_Lehninger', 'Charge_pH7.4_Lehninger', 'Freq_Tiny', 'Freq_Small', 'Freq_Aliphatic', 'Freq_Aromatic', 'Freq_Non_polar', 'Freq_Polar', 'Freq_Charged', 'Freq_Basic', 'Freq_Acidic', 'PCA1', 'PCA2', 'tSNE1', 'tSNE2', 'DBSCAN_labels'])
 fig_tsne_dbscan.show()
 
-# Identifying and printing specific points based on visual inspection
-# Replace the coordinates with the ones identified from the plots
+
 identified_points = data[
-    (data['PCA1'] > 10) & (data['PCA2'] > 0.5)  # Adjust the threshold values based on inspection
+    (data['PCA1'] > 10) & (data['PCA2'] > 0.5)  # Adjust the threshold values
 ]
 
 print('Identified Points:')
 print(identified_points)
 
-# Example: Identifying the most outlying point in the PCA plot
 most_outlying_point_pca = data.iloc[np.argmax(data['PCA1']**2 + data['PCA2']**2)]
 print('Most Outlying Point in PCA:')
 print(most_outlying_point_pca)
 
-# Example: Identifying the most outlying point in the t-SNE plot
 most_outlying_point_tsne = data.iloc[np.argmax(data['tSNE1']**2 + data['tSNE2']**2)]
 print('Most Outlying Point in t-SNE:')
 print(most_outlying_point_tsne)

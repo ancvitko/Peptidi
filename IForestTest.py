@@ -22,6 +22,8 @@ scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.fit_transform(X_test)
 
+## Attempted GridSearchCV to find best parameters suited for IsolationForest
+
 # param_grid = {
 #     'max_samples': ['auto'] + list(range(1, 1000, 100)),  # 'auto' or integer value between 1 and number of samples
 #     'bootstrap': [True, False],  # True or False

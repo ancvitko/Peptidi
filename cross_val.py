@@ -14,6 +14,8 @@ from sklearn import model_selection
 from sklearn.model_selection import GridSearchCV
 from sklearn.preprocessing import StandardScaler
 
+## OLD/DEPRECATED CODE: from when we thought the label column signified anomaly scores :')
+
 data = pd.read_csv("peptides_data.csv")
 
 sequences = data["sequence"].to_numpy()

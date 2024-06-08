@@ -11,14 +11,13 @@ iterations_results = []
 def get_anomalies_with_scores(X, random_state, cont, max_samples, max_features):
     clf = IsolationForest(contamination=cont, random_state=random_state, max_samples = max_samples, max_features=max_features)
     clf.fit(X)
-    # Predict anomalies (-1 for anomaly, 1 for normal)
+    #-1 for anomaly, 1 for normal
     anomalies = clf.predict(X)
     anomaly_indices = np.where(anomalies == -1)[0]
     decision_scores = clf.decision_function(X)
     
     return anomaly_indices, decision_scores, anomalies
 
-# Run Isolation Forest multiple times and track anomalies
 num_runs = 10
 all_anomalies = []
 all_scores = []
@@ -43,7 +42,7 @@ for i in range(num_runs):
     # Percentage of anomalies in the whole dataset
     perc_anomalies = (len(anomalies) / len(X)) * 100
     
-    # Anomaly with highest decision score (least anomalous)
+    # Anomaly with highest decision score (least abnormal)
     if num_anomalies > 0:
         highest_decision_score = np.max(scores[anomalies])
         lowest_decision_score = np.min(scores[anomalies])
@@ -84,7 +83,7 @@ for i in range(num_runs):
         print(sorted_run_data.iloc[before_index])
         
 
-#get general information on each iteration
+# Get general information on each iteration
 iterations_df = pd.DataFrame(iterations_results)
 print("GENERAL INFO OF ITERATIONS")
 print(iterations_df)
@@ -144,7 +143,7 @@ print('Decision Scores of Inconsistent Anomalies for Each Run (Sorted):')
 print(sorted_inconsistent_anomaly_scores)
 
 
-    # Print the information for the specific row
+# Print the information for the specific row
 specific_row_index = 1856
 
 if specific_row_index in data.index:

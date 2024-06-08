@@ -7,7 +7,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-
+## Used to generate the plots in 'images' folder and get statistics of input dataset
 df = pd.read_csv('peptides_data.csv')
 y = df['label'].values
 

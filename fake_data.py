@@ -34,7 +34,7 @@ def generate_fake_data(ranges, num_samples):
         fake_data[column] = np.random.uniform(low=min_val, high=max_val, size=num_samples)
     return fake_data
 
-# Generate fake data
+# Generate fake data - with values outside of the usual range
 num_fake_samples = 2000
 fake_df = generate_fake_data(ranges, num_fake_samples)
 
