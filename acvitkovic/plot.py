@@ -4,7 +4,7 @@ from sklearn.ensemble import IsolationForest
 from sklearn.inspection import DecisionBoundaryDisplay
 
 # Step 1: Load Filtered Data
-data_filtered = pd.read_csv('filtered_peptides.csv')
+data_filtered = pd.read_csv('filtered_train_peptides_label_0.csv')
 
 # Select two features for visualization
 # Example: Using 'Cruciani_1' and 'Cruciani_2' for the plot

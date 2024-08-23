@@ -5,7 +5,7 @@ from sklearn.manifold import TSNE
 from sklearn.inspection import DecisionBoundaryDisplay
 
 # Load Filtered Data
-data_filtered = pd.read_csv('filtered_peptides.csv')
+data_filtered = pd.read_csv('combined.csv')
 
 # Separate Features and Apply t-SNE
 features = data_filtered.columns[:-2]  # Exclude 'anomaly_score' and 'anomaly'
@@ -16,14 +16,14 @@ tsne = TSNE(n_components=2, random_state=42)
 X_reduced = tsne.fit_transform(X)
 
 # Train the Isolation Forest on Reduced Data
-clf = IsolationForest(contamination='auto', random_state=42)
+clf = IsolationForest(contamination=0.1095759379317675, random_state=42)
 clf.fit(X_reduced)
 
 #Plot the Decision Boundary
 disp = DecisionBoundaryDisplay.from_estimator(
     clf,
     X_reduced,
-    response_method="predict",
+    response_method="decision_function",
     alpha=0.5,
 )
 

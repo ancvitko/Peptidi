@@ -16,7 +16,7 @@ pca = PCA(n_components=2)
 X_reduced = pca.fit_transform(X)
 
 # Step 3: Train the Isolation Forest on Reduced Data
-clf = IsolationForest(n_estimators=2048, contamination=0.1095759379317675, random_state=42)
+clf = IsolationForest(n_estimators=2048,contamination=0.1095759379317675, random_state=42)
 clf.fit(X_reduced)
 
 # Step 4: Plot the Decision Boundary
@@ -43,11 +43,15 @@ inlier_patch = mpatches.Patch(color='red', label='Inliers')
 outlier_patch = mpatches.Patch(color='blue', label='Outliers')
 plt.legend(handles=[inlier_patch, outlier_patch], title="Prediction")
 
+# Annotate each point with its index
+for i, (x, y) in enumerate(X_reduced):
+    disp.ax_.annotate(str(i), (x, y), fontsize=8, alpha=0.7)
+
 # Show the plot
 plt.show()
 
 # Step 5: Create a new CSV file with indices and anomaly labels
-anomaly_labels = ['inlier' if label == 1 else 'outlier' for label in labels]
+anomaly_labels = ['1' if label == 1 else '-1' for label in labels]
 anomaly_data = pd.DataFrame({'index': data_filtered.index, 'anomaly': anomaly_labels})
 
 # Save the anomaly data to a new CSV file
